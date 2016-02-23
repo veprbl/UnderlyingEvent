@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<job minFilesPerProcess="10" maxFilesPerProcess="20" filesPerHour="2" fileListSyntax="xrootd" simulateSubmission="false">
+  <command>
+    stardev
+    limit coredumpsize 0
+   
+    foreach jetfile ( `awk '{ print $1 }' $FILELIST` )
+    set pathname=`dirname $jetfile`
+    set skimfile=`basename $jetfile .jets.root`.skim.root
+    set uehistfile=`basename $jetfile .jets.root`.uehists.root
+    set logfile=`basename $jetfile .jets.root`.log
+    root4star -q -b RunOffAxisConeUEAnalysis.C\(1e8,\"$jetfile\"\,\"$pathname/$skimfile\"\,\"$uehistfile\"\) &gt; &amp; $logfile
+    end
+
+  </command> 
+ 
+  <SandBox installer="ZIP">
+    <Package name="ueOffAxisConeAnalysis">
+      <File>file:/star/u/gdwebb/UE_CVS_Check/macros/RunOffAxisConeUEAnalysis.C</File>
+      <File>file:/star/u/gdwebb/UE_CVS_Check/.sl64_gcc482</File>
+    </Package>
+  </SandBox>
+  <input URL="filelist:/star/u/gdwebb/UE_CVS_Check/scripts/lists/listOf2012JetFiles_part3.txt" />
+  <stdout URL="file:/gpfs01/star/scratch/gdwebb/Run12/UEAnalysis/Data/log/uerun$JOBID.log"/>
+  <stderr URL="file:/gpfs01/star/scratch/gdwebb/Run12/UEAnalysis/Data/err/uerun$JOBID.err"/> 
+  <output fromScratch="*.root" toURL="file:/gpfs01/star/scratch/gdwebb/Run12/UEAnalysis/Data/hists/" />
+  <output fromScratch="*.log" toURL="file:/gpfs01/star/scratch/gdwebb/Run12/UEAnalysis/Data/log/" />
+</job>
+

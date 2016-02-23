@@ -1,0 +1,1 @@
+../../../../../StRoot/StSpinPool/StFmsTriggerMaker/Board.hh

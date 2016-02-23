@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<job minFilesPerProcess="10" maxFilesPerProcess="20" filesPerHour="2" fileListSyntax="xrootd" simulateSubmission="false">
+  <command>
+    stardev
+    limit coredumpsize 0
+   
+    foreach jetfile ( `awk '{ print $1 }' $FILELIST` )
+    set pathname=`dirname $jetfile`
+    set skimfile=`basename $jetfile .jets.root`.skim.root
+    set uefile=`basename $jetfile .jets.root`.ue.root
+    set uehistfile=`basename $jetfile .jets.root`.uehists.root
+    set logfile=`basename $jetfile .jets.root`.log
+    root4star -q -b RunUEAnalysis.C\(1e8,\"$jetfile\"\,\"$pathname/$skimfile\"\,\"$pathname/$uefile\"\,\"$SCRATCH/$uehistfile\"\) &gt; &amp; $logfile
+    end
+
+  </command> 
+ 
+  <SandBox installer="ZIP">
+    <Package name="ueAnalysis">
+      <File>file:/star/u/gdwebb/Test_UEpp500/macros/RunUEAnalysis.C</File>
+      <File>file:/star/u/gdwebb/Test_UEpp500/.sl64_gcc482</File>
+    </Package>
+  </SandBox>
+  <input URL="filelist:/star/u/gdwebb/Test_UEpp500/scripts/lists/listOfJetFiles.txt" />
+  <stdout URL="file:/gpfs01/star/scratch/gdwebb/Run9/UEAnalysis/Data/log/uerun$JOBID.log"/>
+  <stderr URL="file:/gpfs01/star/scratch/gdwebb/Run9/UEAnalysis/Data/err/uerun$JOBID.err"/> 
+  <output fromScratch="*.root" toURL="file:/gpfs01/star/scratch/gdwebb/Run9/UEAnalysis/Data/hists/" />
+  <output fromScratch="*.log" toURL="file:/gpfs01/star/scratch/gdwebb/Run9/UEAnalysis/Data/log/" />
+</job>
+

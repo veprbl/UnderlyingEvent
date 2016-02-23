@@ -1,0 +1,10 @@
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_0010001.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_1010001.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_1010002.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_1010003.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_1020001.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_1020002.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_1020003.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_1040001.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_1040002.jets.root
+/gpfs01/star/scratch/zchang/Run12Jets_final/13077067/st_physics_13077067_raw_2020001.jets.root

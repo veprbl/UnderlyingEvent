@@ -1,0 +1,1 @@
+../../../../../StRoot/StSpinPool/StFmsTriggerMaker/fms_fm001_2012_a.cc

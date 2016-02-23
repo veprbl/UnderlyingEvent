@@ -1,0 +1,1 @@
+../../../../../StRoot/StSpinPool/StFpsQaMaker/StFpsQaMaker.cxx

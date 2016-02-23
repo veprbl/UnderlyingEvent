@@ -1,0 +1,1 @@
+../../../../../StRoot/StSpinPool/StFmsTriggerMaker/StFmsBitCheckMaker.h
