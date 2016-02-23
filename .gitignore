@@ -1,0 +1,10 @@
+#ignore the scheduler files in the scripts directory
+/scripts/*.csh 
+/scripts/*.session.xml
+/scripts/*.condor.log
+/scripts/*.report
+/scripts/*.list
+
+
+#ignore the ~ files created by emacs
+*~
