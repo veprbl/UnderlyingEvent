@@ -1,0 +1,1 @@
+../../../../StRoot/StJetFinder/StFastJetAreaPars.h

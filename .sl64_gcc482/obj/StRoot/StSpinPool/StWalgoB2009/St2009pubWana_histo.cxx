@@ -1,0 +1,1 @@
+../../../../../StRoot/StSpinPool/StWalgoB2009/St2009pubWana_histo.cxx

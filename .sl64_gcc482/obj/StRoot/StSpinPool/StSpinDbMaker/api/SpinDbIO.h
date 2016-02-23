@@ -1,0 +1,1 @@
+../../../../../../StRoot/StSpinPool/StSpinDbMaker/api/SpinDbIO.h

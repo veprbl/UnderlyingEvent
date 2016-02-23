@@ -1,0 +1,1 @@
+../../../../../StRoot/StSpinPool/StFmsTriggerMaker/bits.hh
