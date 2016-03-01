@@ -4,7 +4,11 @@
 /scripts/*.condor.log
 /scripts/*.report
 /scripts/*.list
-
+/scripts/*.condor
+/scritps/sched*.xml
+/scripts/*.dataset
+/scripts/*.package
+/scripts/*.zip
 
 #ignore the ~ files created by emacs
 *~
