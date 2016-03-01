@@ -5,7 +5,7 @@
 /scripts/*.report
 /scripts/*.list
 /scripts/*.condor
-/scritps/sched*.xml
+/scripts/sched*.xml
 /scripts/*.dataset
 /scripts/*.package
 /scripts/*.zip
