@@ -94,7 +94,7 @@ void RunEmbedDetectorParticleUEAnalysis(int nentries = 1E9,
   Float_t numtracks_transMax, numtowers_transMax, numtracks_transMin, numtowers_transMin;
   Float_t sumtowerEt_away, sumtrackpT_away, sumpT_away, sumtrackpT_toward, sumtowerEt_toward, sumpT_toward;
   Float_t numtowers_away, numtracks_away, numtracks_toward, numtowers_toward;
-  Float_t leadingJetpT;
+  Float_t leadingJetpT, leadingJetphi;
 
   Float_t sumparticlepT_transP, sumparticlepT_transM;
   Float_t numparticles_transP, numparticles_transM;
@@ -102,7 +102,9 @@ void RunEmbedDetectorParticleUEAnalysis(int nentries = 1E9,
   Float_t numparticles_transMax, numparticles_transMin;
   Float_t sumparticlepT_away, sumparticlepT_toward;
   Float_t numparticles_away, numparticles_toward;
-  Float_t leadingJetpT_particle;
+  Float_t leadingJetpT_particle, leadingJetphi_particle;
+
+  Float_t deltaLeadingJet_Phi;
 
   for (int iEntry = 0; iEntry < nentries; ++iEntry) {
     if (jetChain->GetEvent(iEntry) <= 0 || skimChain->GetEvent(iEntry) <= 0 || ueChain->GetEvent(iEntry) <= 0) break;
@@ -140,9 +142,13 @@ void RunEmbedDetectorParticleUEAnalysis(int nentries = 1E9,
     Bool_t geoFlagJP2  = matchedToJetPatch(leadingjet,barrelJetPatches); // Geo Flag
 
     leadingJetpT = leadingjet->pt(); //Define the leading jet pT dectector level 
+    leadingJetphi = leadingjet->phi(); 
     leadingJetpT_particle = leadingjet_particlelevel->pt(); // Define the leading jet pT at the particle level
+    leadingJetphi_particle = leadingjet_particlelevel->phi();
+    deltaLeadingJet_Phi =  TVector2::Phi_mpi_pi(leadingJetphi - leadingJetphi_particle);
     //    if( flagtrigJP2 && geoFlagJP2){//did, should, and geo trigs fired 
     if( !flagtrigJP2 || !geoFlagJP2){continue;} // Require both flagtrigJP2 and geoFlagJP2 to be true. 
+    hDeltaLeadingJetPhiJP2->Fill(deltaLeadingJet_Phi);
     if( !matchedDetectorParticleJet(leadingjet, leadingjet_particlelevel)){continue; }//Check that the detector and particle level leading jets match
     hleadingjetpTJP2->Fill(leadingJetpT); 
     
@@ -457,6 +463,8 @@ void BookHists()
 {
   //Book histograms
   TH1F* hleadingjetpTJP2 = new TH1F("hleadingjetpTJP2",";Leading jet p_{T} [GeV]",40,0,80);
+
+  TH1F* hDeltaLeadingJetPhiJP2 = new TH1F("hDeltaLeadingJetPhiJP2","hDeltaLeadingJetPhiJP2",120,-3.14159,3.14159);
 
   //Event Histograms
   TH2F* htransP_numTracksVsMaxJetpTJP2 = new TH2F("htransP_numTracksVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
