@@ -10,6 +10,11 @@ class StJetSkimTrig;
 
 #include <map>
 
+static const Int_t npTbins = 13; // jet pT 18% resolutions
+const Double_t npTbins0[npTbins+1] = {10.0,11.8,13.9,16.4,19.4,22.9,27.0,31.9,37.6,44.4,52.3,61.8,72.9,86.0};
+
+
+
 void RunEmbedDetectorParticleUEAnalysis(int nentries = 1E9,
 		   const char* jetfile  = "/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Embed_inclu/pTbin_35_45/pt35_45_10100017_10.jets.root",
 		   const char* skimfile = "/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Embed_inclu/pTbin_35_45/pt35_45_10100017_10.skim.root",
@@ -462,86 +467,86 @@ void RunEmbedDetectorParticleUEAnalysis(int nentries = 1E9,
 void BookHists()
 {
   //Book histograms
-  TH1F* hleadingjetpTJP2 = new TH1F("hleadingjetpTJP2",";Leading jet p_{T} [GeV]",40,0,80);
+  TH1F* hleadingjetpTJP2 = new TH1F("hleadingjetpTJP2",";Leading jet p_{T} [GeV]",npTbins,npTbins0);
 
   TH1F* hDeltaLeadingJetPhiJP2 = new TH1F("hDeltaLeadingJetPhiJP2","hDeltaLeadingJetPhiJP2",120,-3.14159,3.14159);
 
   //Event Histograms
-  TH2F* htransP_numTracksVsMaxJetpTJP2 = new TH2F("htransP_numTracksVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransP_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransP_sumTrackpTVsMaxJetpTJP2","transP;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransP_numTracksVsMaxJetpTJP2 = new TH2F("htransP_numTracksVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransP_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransP_sumTrackpTVsMaxJetpTJP2","transP;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htransP_numTowersVsMaxJetpTJP2 = new TH2F("htransP_numTowersVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransP_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransP_sumTowerEtVsMaxJetpTJP2","transP;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransP_sumPtVsMaxJetpTJP2 = new TH2F("htransP_sumPtVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransP_numTowersVsMaxJetpTJP2 = new TH2F("htransP_numTowersVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransP_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransP_sumTowerEtVsMaxJetpTJP2","transP;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransP_sumPtVsMaxJetpTJP2 = new TH2F("htransP_sumPtVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htransM_numTracksVsMaxJetpTJP2 = new TH2F("htransM_numTracksVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransM_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransM_sumTrackpTVsMaxJetpTJP2","transM;  jet p_{T} [GeV];<#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)] ",40,0,80,20,0,20);
+  TH2F* htransM_numTracksVsMaxJetpTJP2 = new TH2F("htransM_numTracksVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransM_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransM_sumTrackpTVsMaxJetpTJP2","transM;  jet p_{T} [GeV];<#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)] ",npTbins,npTbins0,7,0,14);
  
-  TH2F* htransM_numTowersVsMaxJetpTJP2 = new TH2F("htransM_numTowersVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransM_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransM_sumTowerEtVsMaxJetpTJP2","transM;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransM_sumPtVsMaxJetpTJP2 = new TH2F("htransM_sumPtVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransM_numTowersVsMaxJetpTJP2 = new TH2F("htransM_numTowersVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransM_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransM_sumTowerEtVsMaxJetpTJP2","transM;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransM_sumPtVsMaxJetpTJP2 = new TH2F("htransM_sumPtVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
 
-  TH2F* htransverse_numTracksVsMaxJetpTJP2 = new TH2F("htransverse_numTracksVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransverse_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransverse_sumTrackpTVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransverse_numTracksVsMaxJetpTJP2 = new TH2F("htransverse_numTracksVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransverse_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransverse_sumTrackpTVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htransverse_numTowersVsMaxJetpTJP2 = new TH2F("htransverse_numTowersVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransverse_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransverse_sumTowerEtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransverse_sumPtVsMaxJetpTJP2 = new TH2F("htransverse_sumPtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransverse_numTowersVsMaxJetpTJP2 = new TH2F("htransverse_numTowersVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransverse_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransverse_sumTowerEtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransverse_sumPtVsMaxJetpTJP2 = new TH2F("htransverse_sumPtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
 
-  TH2F* htransMax_numTracksVsMaxJetpTJP2 = new TH2F("htransMax_numTracksVsMaxJetpTJP2","transMax; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransMax_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransMax_sumTrackpTVsMaxJetpTJP2","transMax;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransMax_numTracksVsMaxJetpTJP2 = new TH2F("htransMax_numTracksVsMaxJetpTJP2","transMax; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransMax_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransMax_sumTrackpTVsMaxJetpTJP2","transMax;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htransMax_numTowersVsMaxJetpTJP2 = new TH2F("htransMax_numTowersVsMaxJetpTJP2","transMax; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransMax_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransMax_sumTowerEtVsMaxJetpTJP2","transMax;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransMax_numTowersVsMaxJetpTJP2 = new TH2F("htransMax_numTowersVsMaxJetpTJP2","transMax; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransMax_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransMax_sumTowerEtVsMaxJetpTJP2","transMax;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
   
-  TH2F* htransMin_numTracksVsMaxJetpTJP2 = new TH2F("htransMin_numTracksVsMaxJetpTJP2","transMin; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransMin_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransMin_sumTrackpTVsMaxJetpTJP2","transMin;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransMin_numTracksVsMaxJetpTJP2 = new TH2F("htransMin_numTracksVsMaxJetpTJP2","transMin; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransMin_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransMin_sumTrackpTVsMaxJetpTJP2","transMin;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htransMin_numTowersVsMaxJetpTJP2 = new TH2F("htransMin_numTowersVsMaxJetpTJP2","transMin; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransMin_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransMin_sumTowerEtVsMaxJetpTJP2","transMin;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransMin_numTowersVsMaxJetpTJP2 = new TH2F("htransMin_numTowersVsMaxJetpTJP2","transMin; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransMin_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransMin_sumTowerEtVsMaxJetpTJP2","transMin;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htransMax_sumpTVsMaxJetpTJP2 = new TH2F("htransMax_sumpTVsMaxJetpTJP2", "transMax; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransMin_sumpTVsMaxJetpTJP2 = new TH2F("htransMin_sumpTVsMaxJetpTJP2", "transMin; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransMax_sumpTVsMaxJetpTJP2 = new TH2F("htransMax_sumpTVsMaxJetpTJP2", "transMax; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransMin_sumpTVsMaxJetpTJP2 = new TH2F("htransMin_sumpTVsMaxJetpTJP2", "transMin; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
 
-  TH2F* haway_numTracksVsMaxJetpTJP2 = new TH2F("haway_numTracksVsMaxJetpTJP2","away; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* haway_sumTrackpTVsMaxJetpTJP2 = new TH2F("haway_sumTrackpTVsMaxJetpTJP2","away;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* haway_numTracksVsMaxJetpTJP2 = new TH2F("haway_numTracksVsMaxJetpTJP2","away; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* haway_sumTrackpTVsMaxJetpTJP2 = new TH2F("haway_sumTrackpTVsMaxJetpTJP2","away;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* haway_numTowersVsMaxJetpTJP2 = new TH2F("haway_numTowersVsMaxJetpTJP2","away; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* haway_sumTowerEtVsMaxJetpTJP2 = new TH2F("haway_sumTowerEtVsMaxJetpTJP2","away;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* haway_sumPtVsMaxJetpTJP2 = new TH2F("haway_sumPtVsMaxJetpTJP2","away; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* haway_numTowersVsMaxJetpTJP2 = new TH2F("haway_numTowersVsMaxJetpTJP2","away; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* haway_sumTowerEtVsMaxJetpTJP2 = new TH2F("haway_sumTowerEtVsMaxJetpTJP2","away;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* haway_sumPtVsMaxJetpTJP2 = new TH2F("haway_sumPtVsMaxJetpTJP2","away; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htoward_numTracksVsMaxJetpTJP2 = new TH2F("htoward_numTracksVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htoward_sumTrackpTVsMaxJetpTJP2 = new TH2F("htoward_sumTrackpTVsMaxJetpTJP2","toward;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htoward_numTracksVsMaxJetpTJP2 = new TH2F("htoward_numTracksVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htoward_sumTrackpTVsMaxJetpTJP2 = new TH2F("htoward_sumTrackpTVsMaxJetpTJP2","toward;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htoward_numTowersVsMaxJetpTJP2 = new TH2F("htoward_numTowersVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htoward_sumTowerEtVsMaxJetpTJP2 = new TH2F("htoward_sumTowerEtVsMaxJetpTJP2","toward;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htoward_sumPtVsMaxJetpTJP2 = new TH2F("htoward_sumPtVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htoward_numTowersVsMaxJetpTJP2 = new TH2F("htoward_numTowersVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htoward_sumTowerEtVsMaxJetpTJP2 = new TH2F("htoward_sumTowerEtVsMaxJetpTJP2","toward;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htoward_sumPtVsMaxJetpTJP2 = new TH2F("htoward_sumPtVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
 
   // Book Particle Level Histograms 
   
-  TH1F* hleadingjetpTJP2_particle = new TH1F("hleadingjetpTJP2_particle",";Leading jet p_{T} [GeV] (particle level)",40,0,80);
+  TH1F* hleadingjetpTJP2_particle = new TH1F("hleadingjetpTJP2_particle",";Leading jet p_{T} [GeV] (particle level)",npTbins,npTbins0);
   
   //Event Histograms
-  TH2F* htransP_numParticlesVsMaxJetpTJP2 = new TH2F("htransP_numParticlesVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransP_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransP_sumParticlepTVsMaxJetpTJP2","transP;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransP_numParticlesVsMaxJetpTJP2 = new TH2F("htransP_numParticlesVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransP_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransP_sumParticlepTVsMaxJetpTJP2","transP;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
 
-  TH2F* htransM_numParticlesVsMaxJetpTJP2 = new TH2F("htransM_numParticlesVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransM_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransM_sumParticlepTVsMaxJetpTJP2","transM;  jet p_{T} [GeV];<#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)] ",40,0,80,20,0,20); 
+  TH2F* htransM_numParticlesVsMaxJetpTJP2 = new TH2F("htransM_numParticlesVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransM_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransM_sumParticlepTVsMaxJetpTJP2","transM;  jet p_{T} [GeV];<#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)] ",npTbins,npTbins0,7,0,14); 
  
-  TH2F* htransverse_numParticlesVsMaxJetpTJP2 = new TH2F("htransverse_numParticlesVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransverse_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransverse_sumParticlepTVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransverse_numParticlesVsMaxJetpTJP2 = new TH2F("htransverse_numParticlesVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransverse_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransverse_sumParticlepTVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
 
-  TH2F* htransMax_numParticlesVsMaxJetpTJP2 = new TH2F("htransMax_numParticlesVsMaxJetpTJP2","transMax; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransMax_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransMax_sumParticlepTVsMaxJetpTJP2","transMax;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransMax_numParticlesVsMaxJetpTJP2 = new TH2F("htransMax_numParticlesVsMaxJetpTJP2","transMax; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransMax_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransMax_sumParticlepTVsMaxJetpTJP2","transMax;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htransMin_numParticlesVsMaxJetpTJP2 = new TH2F("htransMin_numParticlesVsMaxJetpTJP2","transMin; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htransMin_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransMin_sumParticlepTVsMaxJetpTJP2","transMin;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htransMin_numParticlesVsMaxJetpTJP2 = new TH2F("htransMin_numParticlesVsMaxJetpTJP2","transMin; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htransMin_sumParticlepTVsMaxJetpTJP2 = new TH2F("htransMin_sumParticlepTVsMaxJetpTJP2","transMin;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* haway_numParticlesVsMaxJetpTJP2 = new TH2F("haway_numParticlesVsMaxJetpTJP2","away; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* haway_sumParticlepTVsMaxJetpTJP2 = new TH2F("haway_sumParticlepTVsMaxJetpTJP2","away;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* haway_numParticlesVsMaxJetpTJP2 = new TH2F("haway_numParticlesVsMaxJetpTJP2","away; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* haway_sumParticlepTVsMaxJetpTJP2 = new TH2F("haway_sumParticlepTVsMaxJetpTJP2","away;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
  
-  TH2F* htoward_numParticlesVsMaxJetpTJP2 = new TH2F("htoward_numParticlesVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
-  TH2F* htoward_sumParticlepTVsMaxJetpTJP2 = new TH2F("htoward_sumParticlepTVsMaxJetpTJP2","toward;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,20,0,20);
+  TH2F* htoward_numParticlesVsMaxJetpTJP2 = new TH2F("htoward_numParticlesVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
+  TH2F* htoward_sumParticlepTVsMaxJetpTJP2 = new TH2F("htoward_sumParticlepTVsMaxJetpTJP2","toward;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",npTbins,npTbins0,7,0,14);
 
 }
 
