@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+     <job minFilesPerProcess="5" maxFilesPerProcess="10" filesPerHour="1" fileListSyntax="xrootd" simulateSubmission="false">
+  <command>
+   
+   limit coredumpsize 0
+   cp $FILELIST /gpfs01/star/i_uky/gdwebb/UEpp500/&runnumber;/run&runnumber;.$JOBINDEX.list
+   foreach mudstfile ( `awk '{ print $1 }' $FILELIST` )
+   set jetfile=`basename $mudstfile .MuDst.root`.jets.root
+   set skimfile=`basename $mudstfile .MuDst.root`.skim.root
+   set uefile=`basename $mudstfile .MuDst.root`.ue.root
+   set logfile=`basename $mudstfile .MuDst.root`.log
+   time root4star -q -b RunJetFinder2009pro_ue.C\(1e9,\"$mudstfile\",\"$jetfile\",\"$skimfile\",\"$uefile\"\) &gt; &amp; $logfile
+   end
+  </command>
+
+   <input URL="catalog:star.bnl.gov?production=P09ig,filetype=daq_reco_MuDst,filename~st_physics,tpx=1,emc=1,sanity=1,runnumber=&runnumber;" nFiles="all" preferStorage="local" />
+   <stdout URL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/&runnumber;/log/st_physics_&runnumber;_$JOBINDEX.log"/>
+   <stderr URL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/&runnumber;/err/st_physics_&runnumber;_$JOBINDEX.err"/>
+   <output fromScratch="*.jets.root" toURL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/&runnumber;/"/>
+   <output fromScratch="*.skim.root" toURL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/&runnumber;/"/>
+   <output fromScratch="*.ue.root" toURL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/&runnumber;/"/>
+   <output fromScratch="*.log" toURL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/&runnumber;/log/"/>
+
+<SandBox installer="ZIP">
+<Package name="grantsUECode">
+<File>file:/star/u/gdwebb/Test_UEpp500/RunJetFinder2009pro_ue.C</File>
+<File>file:/star/u/gdwebb/Test_UEpp500/.sl64_gcc482</File>
+</Package>
+</SandBox>
+
+</job>
+
