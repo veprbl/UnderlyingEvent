@@ -10,7 +10,7 @@ class StJetSkimTrig;
 
 #include <map>
 
-void RunUEAnalysis(int nentries = 1E9,
+void RunUEAnalysis(int nentries = 1E3,
 		   const char* jetfile  = "/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/10103041/st_physics_10103041_raw_*.jets.root",
 		   const char* skimfile = "/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/10103041/st_physics_10103041_raw_*.skim.root",
 		   const char* uefile = "/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Data/10103041/st_physics_10103041_raw_*.ue.root",
