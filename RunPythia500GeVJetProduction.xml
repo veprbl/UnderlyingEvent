@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<job minFilesPerProcess="5" maxFilesPerProcess="10" filesPerHour="1" fileListSyntax="xrootd" simulateSubmission="false">
+  <command>
+    
+    limit coredumpsize 0
+    foreach fzdfile ( `awk '{ print $1 }' $FILELIST` )
+    set dirpath=`dirname $fzdfile`
+    set jetfile=`basename $fzdfile .fzd`.jets.root
+    set uefile=`basename $fzdfile .fzd`.ue.root
+    set logfile=`basename $fzdfile .fzd`.log
+    
+    time root4star -q -b RunJetFinder2009fzd_ue.C\(1e9,\"$fzdfile\",\"$jetfile\",\"$uefile\"\) &gt; &amp; $logfile
+    end
+  </command>
+  <input  URL="file:/gpfs01/star/scratch/gdwebb/TuneStudy/perugia2012_pt3_-1_*.fzd" /> 
+  <stdout URL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Pythia_tunestudy/log/perugia2012_3_-1_$JOBINDEX.log"/>
+  <stderr URL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Pythia_tunestudy/err/perugia2012_3_-1_$JOBINDEX.err"/>
+  <output fromScratch="*.jets.root" toURL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Pythia_tunestudy/"/>
+  <output fromScratch="*.ue.root" toURL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Pythia_tunestudy/"/>
+  <output fromScratch="*.log" toURL="file:/gpfs01/star/i_bnl/gdwebb/Run9/500GeVJets/Pythia_tunestudy/log/"/>
+  
+<SandBox installer="ZIP">
+<Package name="grantsUECode_fzd">
+<File>file:/star/u/gdwebb/Test_UEpp500/RunJetFinder2009fzd_ue.C</File>
+<File>file:/star/u/gdwebb/Test_UEpp500/.sl64_gcc482</File>
+</Package>
+</SandBox>
+
+</job>
+
