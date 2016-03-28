@@ -9,6 +9,7 @@
 /scripts/*.dataset
 /scripts/*.package
 /scripts/*.zip
+.sl64_gcc482
 
 #ignore the ~ files created by emacs
 *~
