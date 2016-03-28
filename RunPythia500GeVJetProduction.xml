@@ -21,8 +21,8 @@
   
 <SandBox installer="ZIP">
 <Package name="grantsUECode_fzd">
-<File>file:/star/u/gdwebb/Test_UEpp500/RunJetFinder2009fzd_ue.C</File>
-<File>file:/star/u/gdwebb/Test_UEpp500/.sl64_gcc482</File>
+<File>file:/star/u/gdwebb/UE_CVS_Check/RunJetFinder2009fzd_ue.C</File>
+<File>file:/star/u/gdwebb/UE_CVS_Check/.sl64_gcc482</File>
 </Package>
 </SandBox>
 
