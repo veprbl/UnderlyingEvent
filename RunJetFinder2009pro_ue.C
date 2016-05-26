@@ -9,7 +9,8 @@ void RunJetFinder2009pro_ue(int nevents = 1E3,
 			 const char* mudstfile = "/star/institutions/uky/gdwebb/UE_histos/st_physics_10103041_raw_8030001.MuDst.root",
 			 const char* jetfile = "jets_copy.root",
 			 const char* skimfile = "skim_copy.root",
-			 const char* uefile = "ueTree_copy.root",
+			 const char* uefile = "ueTree_region.root",
+			    const char* uefile2 = "ueTree_offcone.root", 
 			 int mEmbed = 0,
 			 int mPythia = 0,
 			 bool useL2 = false)
@@ -114,8 +115,9 @@ void RunJetFinder2009pro_ue(int nevents = 1E3,
   StJetSkimEventMaker* skimEventMaker = new StJetSkimEventMaker("StJetSkimEventMaker",muDstMaker,skimfile);
 
   // Jet maker
-  StJetMaker2009* jetmaker = new StJetMaker2009;
+  StJetMaker2012* jetmaker = new StJetMaker2012;
   jetmaker->setJetFile(jetfile);
+  jetmaker->setJetFileUe(uefile2);
   // UE maker
   StUEMaker2009* uemaker = new StUEMaker2009;
   uemaker->setUeFile(uefile);
@@ -165,19 +167,20 @@ void RunJetFinder2009pro_ue(int nevents = 1E3,
   anapars12->addJetCut(new StProtoJetCutEta(-100,100));
  
   //---------Region Criteria---------
-  anapars12_toward = anapars12; // Toward Region for Tracks and Towers
+  StAnaPars *anapars12_toward = new StAnaPars(*anapars12); // Toward Region for Tracks and Towers
+
   anapars12_toward->setTrackRegion(new StjTrackRegion(60.0,-60.0,1.0));
   anapars12_toward->setTowerRegion(new StjTowerRegion(60.0,-60.0,1.0));
 
-  anapars12_away = anapars12; // Away Region for Tracks and Towers
+  StAnaPars *anapars12_away = new StAnaPars(*anapars12); // Away Region for Tracks and Towers
   anapars12_away->setTrackRegion(new StjTrackRegion(120.0,-120.0,1.0));
   anapars12_away->setTowerRegion(new StjTowerRegion(120.0,-120.0,1.0));
 
-  anapars12_transPlus = anapars12; // Trans Plus for Tracks and Towers
+  StAnaPars *anapars12_transPlus = new StAnaPars(*anapars12); // Trans Plus for Tracks and Towers
   anapars12_transPlus->setTrackRegion(new StjTrackRegion(120.0,60.0,1.0));
   anapars12_transPlus->setTowerRegion(new StjTowerRegion(120.0,60.0,1.0));
 
-  anapars12_transMinus = anapars12; // Trans Minus for Tracks and Towers
+  StAnaPars *anapars12_transMinus = new StAnaPars(*anapars12); // Trans Minus for Tracks and Towers
   anapars12_transMinus->setTrackRegion(new StjTrackRegion(-60.0,-120.0,1.0));
   anapars12_transMinus->setTowerRegion(new StjTowerRegion(-60.0,-120.0,1.0));
   //---------------------------------
@@ -215,11 +218,12 @@ void RunJetFinder2009pro_ue(int nevents = 1E3,
   jetmaker->addBranch("AntiKtR060NHits12",anapars12,AntiKtR060Pars);
   jetmaker->addBranch("AntiKtR040NHits12",anapars12,AntiKtR040Pars);
   jetmaker->addBranch("AntiKtR050NHits12",anapars12,AntiKtR050Pars); 
-
   uemaker->addBranch("toward",anapars12_toward,"AntiKtR060NHits12");
   uemaker->addBranch("away",anapars12_away,"AntiKtR060NHits12");
   uemaker->addBranch("transP",anapars12_transPlus,"AntiKtR060NHits12");
   uemaker->addBranch("transM",anapars12_transMinus,"AntiKtR060NHits12");
+  StOffAxisConesPars *off060 = new StOffAxisConesPars(0.6);
+  jetmaker->addUeBranch("OffAxisConesR060", off060);
 
 
   // Run
