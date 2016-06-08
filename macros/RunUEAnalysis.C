@@ -159,7 +159,7 @@ void RunUEAnalysis(int nentries = 1E3,
     //   hrunnumber->Fill(jetEvent->runId());
   
     //JP2 trigger
-    StJetSkimTrig* trigJP2 = skimEvent->trigger(230411);
+    StJetSkimTrig* trigJP2 = skimEvent->trigger(370621);
     if (!trigJP2) trigJP2 = skimEvent->trigger(230411);
     bool flagtrigJP2 = trigPass(trigJP2, mEmbed); // hardware and software triggers
     map<int,int> barrelJetPatches = skimEvent->barrelJetPatchesAboveTh(2);
