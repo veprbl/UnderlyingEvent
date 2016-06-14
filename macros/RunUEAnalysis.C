@@ -4,6 +4,7 @@ version Reducing the number of histograms to just the sum and num towers and tra
 Check out oldMacros_sumTrackpT/*.C for finding many other histograms made
  */
 
+#include <algorithm>
 #include <iostream>
 #include <map>
 
@@ -76,9 +77,6 @@ void RunUEAnalysis(int nentries = 1E3,
 
   StUeEvent* ueEvent_toward = 0;
   ueChain->SetBranchAddress("toward_AntiKtR060NHits12",&ueEvent_toward);
-
-  StUeEvent *ueEvent_transMax = 0;
-  StUeEvent *ueEvent_transMin = 0;
 
   // Open output file for writing
   TFile* ofile = TFile::Open(outfile,"recreate");
@@ -184,10 +182,6 @@ void RunUEAnalysis(int nentries = 1E3,
       hleadingjetpTJP2->Fill(leadingJetpT); 
       
       //-----------------Transverse Plus ------------------------
-      sumtrackpT_transP = sumtowerEt_transP = 0; 
-      numtracks_transP = numtowers_transP = 0; 
-      sumpT_transP = 0;
-
       sumtrackpT_transP = ueEvent_transP->sumTrackPt();
       sumtowerEt_transP = ueEvent_transP->sumTowerPt();
       sumpT_transP      = ueEvent_transP->sumPt();
@@ -207,10 +201,6 @@ void RunUEAnalysis(int nentries = 1E3,
       // ------------------- End Of Trans Plus --------------------------
 
       //-----------------Transverse Minus ------------------------
-      sumtrackpT_transM = sumtowerEt_transM = 0; 
-      numtracks_transM = numtowers_transM = 0;
-      sumpT_transM = 0; 
-    
       sumtrackpT_transM = ueEvent_transM->sumTrackPt();
       sumtowerEt_transM = ueEvent_transM->sumTowerPt(); 
       sumpT_transM      = ueEvent_transM->sumPt();
@@ -290,18 +280,12 @@ void RunUEAnalysis(int nentries = 1E3,
       
     
       //--------- Sum Track pT Trans Max and Trans Min -------------
-      if(sumtrackpT_transP > sumtrackpT_transM){
-      	ueEvent_transMax = ueEvent_transP;
-      	ueEvent_transMin = ueEvent_transM;
+      if (sumtrackpT_transP == sumtrackpT_transM) {
+         cout << "sumtrackpT_transP = " << sumtrackpT_transP << "\t"
+              << "sumtrackpT_transM = " << sumtrackpT_transM << endl;
       }
-      if(sumtrackpT_transP < sumtrackpT_transM){
-      	ueEvent_transMax = ueEvent_transM;
-      	ueEvent_transMin = ueEvent_transP;
-      }     
-     
-      sumtrackpT_transMax = sumtrackpT_transMin = 0; 
-      sumtrackpT_transMax =  ueEvent_transMax->sumTrackPt();
-      sumtrackpT_transMin =  ueEvent_transMin->sumTrackPt();
+      sumtrackpT_transMax =  std::max(sumtrackpT_transP, sumtrackpT_transM);
+      sumtrackpT_transMin =  std::min(sumtrackpT_transP, sumtrackpT_transM);
 
       htransMax_sumTrackpTVsMaxJetpTJP2->Fill(leadingJetpT,sumtrackpT_transMax/area2);
       htransMin_sumTrackpTVsMaxJetpTJP2->Fill(leadingJetpT,sumtrackpT_transMin/area2);     
@@ -309,53 +293,36 @@ void RunUEAnalysis(int nentries = 1E3,
       
 
       //--------- Num Tracks Trans Max and Trans Min -------------
-      if(numtracks_transP > numtracks_transM){
-      	ueEvent_transMax = ueEvent_transP;
-      	ueEvent_transMin = ueEvent_transM;
+      if (numtracks_transP == numtracks_transM) {
+         cout << "numtracks_transP = " << numtracks_transP << "\t"
+              << "numtracks_transM = " << numtracks_transM << endl;
       }
-      if(numtracks_transP < numtracks_transM){
-      	ueEvent_transMax = ueEvent_transM;
-      	ueEvent_transMin = ueEvent_transP;
-      }
-      
-      numtracks_transMax = numtracks_transMin = 0;  
-      numtracks_transMax = ueEvent_transMax->numberOfTracks();
-      numtracks_transMin = ueEvent_transMin->numberOfTracks();
+      numtracks_transMax = std::max(numtracks_transP, numtracks_transM);
+      numtracks_transMin = std::min(numtracks_transP, numtracks_transM);
       
       htransMax_numTracksVsMaxJetpTJP2->Fill(leadingJetpT,numtracks_transMax/area2);
       htransMin_numTracksVsMaxJetpTJP2->Fill(leadingJetpT,numtracks_transMin/area2);
       // -----------------------------------------------------------
     
       //--------- Sum Tower Et Trans Max and Trans Min -------------
-      if(sumtowerEt_transP > sumtowerEt_transM){
-      	ueEvent_transMax = ueEvent_transP;
-      	ueEvent_transMin = ueEvent_transM;
+      if (sumtowerEt_transP == sumtowerEt_transM) {
+         cout << "sumtowerEt_transP = " << sumtowerEt_transP << "\t"
+              << "sumtowerEt_transM = " << sumtowerEt_transM << endl;
       }
-      if(sumtowerEt_transP < sumtowerEt_transM){
-      	ueEvent_transMax = ueEvent_transM;
-      	ueEvent_transMin = ueEvent_transP;
-      }     
-      sumtowerEt_transMax = sumtowerEt_transMin = 0;
-      sumtowerEt_transMax = ueEvent_transMax->sumTowerPt();
-      sumtowerEt_transMin = ueEvent_transMin->sumTowerPt();
+      sumtowerEt_transMax = std::max(sumtowerEt_transP, sumtowerEt_transM);
+      sumtowerEt_transMin = std::min(sumtowerEt_transP, sumtowerEt_transM);
 
       htransMax_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT,sumtowerEt_transMax/area2);
       htransMin_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT,sumtowerEt_transMin/area2);
       //----------------------------------------------------------
 
       //--------- Num Towers Trans Max and Trans Min -------------
-      if(numtowers_transP > numtowers_transM){
-      	ueEvent_transMax = ueEvent_transP;
-      	ueEvent_transMin = ueEvent_transM;
+      if (numtowers_transP == numtowers_transM) {
+         cout << "numtowers_transP = " << numtowers_transP << "\t"
+              << "numtowers_transM = " << numtowers_transM << endl;
       }
-      if(numtowers_transP < numtowers_transM){
-      	ueEvent_transMax = ueEvent_transM;
-      	ueEvent_transMin = ueEvent_transP;
-      }
-      
-      numtowers_transMax = numtowers_transMin = 0;  
-      numtowers_transMax = ueEvent_transMax->numberOfTowers();
-      numtowers_transMin = ueEvent_transMin->numberOfTowers();
+      numtowers_transMax = std::max(numtowers_transP, numtowers_transM);
+      numtowers_transMin = std::min(numtowers_transP, numtowers_transM);
 
       htransMax_numTowersVsMaxJetpTJP2->Fill(leadingJetpT,numtowers_transMax/area2);
       htransMin_numTowersVsMaxJetpTJP2->Fill(leadingJetpT,numtowers_transMin/area2);
@@ -363,18 +330,12 @@ void RunUEAnalysis(int nentries = 1E3,
 
 
       //--------- Sum pT Trans Max and Trans Min -------------
-      if(sumpT_transP > sumpT_transM){
-      	ueEvent_transMax = ueEvent_transP;
-      	ueEvent_transMin = ueEvent_transM;
+      if (sumpT_transP == sumpT_transM) {
+         cout << "sumpT_transP = " << sumpT_transP << "\t"
+              << "sumpT_transM = " << sumpT_transM << endl;
       }
-      if(sumpT_transP < sumpT_transM){
-      	ueEvent_transMax = ueEvent_transM;
-      	ueEvent_transMin = ueEvent_transP;
-      }     
-     
-      sumpT_transMax = sumpT_transMin = 0; 
-      sumpT_transMax =  ueEvent_transMax->sumPt();
-      sumpT_transMin =  ueEvent_transMin->sumPt();
+      sumpT_transMax = std::max(sumpT_transP, sumpT_transM);
+      sumpT_transMin = std::min(sumpT_transP, sumpT_transM);
 
       htransMax_sumpTVsMaxJetpTJP2->Fill(leadingJetpT,sumpT_transMax/area2);
       htransMin_sumpTVsMaxJetpTJP2->Fill(leadingJetpT,sumpT_transMin/area2);     
