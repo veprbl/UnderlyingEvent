@@ -1,1 +1,0 @@
-../../../../StRoot/StJetFinder/StProtoJet.h

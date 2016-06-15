@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StSpinTree/StSpinTreeReader.h

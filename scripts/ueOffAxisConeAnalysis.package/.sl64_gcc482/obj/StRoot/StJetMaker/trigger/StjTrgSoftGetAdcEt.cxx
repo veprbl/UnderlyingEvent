@@ -1,1 +1,0 @@
-../../../../../StRoot/StJetMaker/trigger/StjTrgSoftGetAdcEt.cxx

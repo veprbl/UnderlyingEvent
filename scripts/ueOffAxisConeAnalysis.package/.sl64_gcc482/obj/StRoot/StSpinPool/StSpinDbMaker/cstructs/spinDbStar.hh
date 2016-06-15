@@ -1,1 +1,0 @@
-../../../../../../StRoot/StSpinPool/StSpinDbMaker/cstructs/spinDbStar.hh

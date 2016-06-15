@@ -1,1 +1,0 @@
-../../../../../../StRoot/StSpinPool/StSpinDbMaker/cstructs/spinDbV124.hh

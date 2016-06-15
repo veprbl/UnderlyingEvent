@@ -1,1 +1,0 @@
-../../../../../StRoot/StJetMaker/tree/StjSpinReader.h

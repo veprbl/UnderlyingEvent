@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StTriggerStudyMaker/StTriggerStudyEvent.h

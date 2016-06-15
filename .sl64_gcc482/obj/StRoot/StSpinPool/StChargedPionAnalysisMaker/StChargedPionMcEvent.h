@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StChargedPionAnalysisMaker/StChargedPionMcEvent.h

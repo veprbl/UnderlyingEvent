@@ -1,1 +1,0 @@
-../../../../../StRoot/StJetMaker/spin/SpinLinkDef.h

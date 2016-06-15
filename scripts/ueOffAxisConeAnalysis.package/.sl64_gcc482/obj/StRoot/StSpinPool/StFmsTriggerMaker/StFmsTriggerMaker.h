@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StFmsTriggerMaker/StFmsTriggerMaker.h

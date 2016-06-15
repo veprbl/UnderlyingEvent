@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StFmsTriggerMaker/mix_fe101_2009_a.hh

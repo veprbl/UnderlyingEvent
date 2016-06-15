@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StWalgo2011/WanaConst.h
