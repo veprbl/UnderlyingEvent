@@ -232,6 +232,9 @@ void RunUEAnalysis(int nentries = 1E3,
 
       htransverse_sumPtVsMaxJetpTJP2->Fill(leadingJetpT, (sumpT_transP + sumpT_transM)/area);
 
+      double jet_area = leadingjet->area();
+      htransverse_dPtVsMaxJetpTJP2->Fill(leadingJetpT, (sumpT_transP + sumpT_transM) / area * jet_area);
+
       //--------------End of Transverse-------------------------      
       //----------------- Away Region ------------------------
       sumtrackpT_away = sumtowerEt_away = 0; 
