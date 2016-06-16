@@ -1,1 +1,0 @@
-../../../../../StRoot/StJetMaker/mcparticles/StjMCNull.h

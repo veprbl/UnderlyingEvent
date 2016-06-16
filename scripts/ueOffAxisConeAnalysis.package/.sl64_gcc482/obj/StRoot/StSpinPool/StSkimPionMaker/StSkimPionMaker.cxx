@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StSkimPionMaker/StSkimPionMaker.cxx

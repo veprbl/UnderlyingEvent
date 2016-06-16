@@ -9,7 +9,10 @@
 /scripts/*.dataset
 /scripts/*.package
 /scripts/*.zip
-.sl64_gcc482
 
 #ignore the ~ files created by emacs
 *~
+
+#ignore cons output
+.consign
+.sl64_gcc482

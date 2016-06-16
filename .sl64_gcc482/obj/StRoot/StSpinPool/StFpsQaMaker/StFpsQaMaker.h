@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StFpsQaMaker/StFpsQaMaker.h

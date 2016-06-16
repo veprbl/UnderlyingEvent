@@ -1,1 +1,0 @@
-../../../../../StRoot/StJetMaker/mckin/MckinLinkDef.h

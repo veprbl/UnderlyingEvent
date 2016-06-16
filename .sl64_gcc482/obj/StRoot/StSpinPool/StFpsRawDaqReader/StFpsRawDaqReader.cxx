@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StFpsRawDaqReader/StFpsRawDaqReader.cxx

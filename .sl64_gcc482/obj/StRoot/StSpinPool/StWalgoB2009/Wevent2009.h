@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StWalgoB2009/Wevent2009.h

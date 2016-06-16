@@ -1,1 +1,0 @@
-../../../../../StRoot/StSpinPool/StWalgo2011/St2011Z_histo.cxx

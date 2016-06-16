@@ -1,1 +1,0 @@
-../../../../../StRoot/StJetMaker/test/StBET4pMakerTest.hh
