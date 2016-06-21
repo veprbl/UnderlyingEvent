@@ -39,7 +39,6 @@ void RunUEAnalysis(int nentries = 1E3,
 		   const char* outfile = "test_jetQAData500Gev_10103041.root",
 		   const Int_t  mEmbed = 0)
 {
-  cout << "nentries = " << nentries << endl;
   cout << "jetfile  = " << jetfile  << endl;
   cout << "skimfile = " << skimfile << endl;
   cout << "uefile   = " << uefile << endl;
@@ -57,6 +56,8 @@ void RunUEAnalysis(int nentries = 1E3,
   jetChain->Add(jetfile);
   skimChain->Add(skimfile);
   ueChain->Add(uefile);
+  nentries = jetChain->GetEntriesFast();
+  cout << "nentries = " << nentries << endl;
   
   // Set jet buffer
   StJetEvent* jetEvent = 0;
