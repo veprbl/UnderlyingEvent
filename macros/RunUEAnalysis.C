@@ -426,10 +426,3 @@ Bool_t hightrackpT(StJetCandidate *leadingjet){
   }
   return false;
 }
-void defineTransMaxMin(float value_P, float value_M){
-  
-  if(value_P > value_M){
-  }
-  if(value_P < value_M){
-  }
-}
