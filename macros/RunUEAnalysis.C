@@ -108,6 +108,12 @@ void RunUEAnalysis(int nentries = 1E3,
   TH2F* htransverse_sumPtVsMaxJetpTJP2 = new TH2F("htransverse_sumPtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransverse_dPtVsMaxJetpTJP2 = new TH2F("htransverse_dPtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)] * (jet area)",40,0,80,320,0.,20.);
 
+  TH2F* htransDiff_numTracksVsMaxJetpTJP2 = new TH2F("htransDiff_numTracksVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* htransDiff_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransDiff_sumTrackpTVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; #Sigmatrack p_{T}",40,0,80,320,0.,20.);
+  TH2F* htransDiff_numTowersVsMaxJetpTJP2 = new TH2F("htransDiff_numTowersVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* htransDiff_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransDiff_sumTowerEtVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* htransDiff_sumPtVsMaxJetpTJP2 = new TH2F("htransDiff_sumPtVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+
   TH2F* htransMax_numTracksVsMaxJetpTJP2 = new TH2F("htransMax_numTracksVsMaxJetpTJP2","transMax; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransMax_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransMax_sumTrackpTVsMaxJetpTJP2","transMax;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
 
@@ -236,6 +242,15 @@ void RunUEAnalysis(int nentries = 1E3,
       htransverse_dPtVsMaxJetpTJP2->Fill(leadingJetpT, (sumpT_transP + sumpT_transM) / area * jet_area);
 
       //--------------End of Transverse-------------------------      
+
+      htransDiff_numTracksVsMaxJetpTJP2->Fill(leadingJetpT, fabs(numtracks_transP - numtracks_transM)/area);
+      htransDiff_sumTrackpTVsMaxJetpTJP2->Fill(leadingJetpT, fabs(sumtrackpT_transP - sumtrackpT_transM)/area);
+
+      htransDiff_numTowersVsMaxJetpTJP2->Fill(leadingJetpT, fabs(numtowers_transP - numtowers_transM)/area);
+      htransDiff_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT, fabs(sumtowerEt_transP - sumtowerEt_transM)/area);
+
+      htransDiff_sumPtVsMaxJetpTJP2->Fill(leadingJetpT, fabs(sumpT_transP - sumpT_transM)/area);
+
       //----------------- Away Region ------------------------
       sumtrackpT_away = sumtowerEt_away = 0; 
       numtracks_away = numtowers_away = 0; 
