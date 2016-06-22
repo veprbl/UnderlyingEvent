@@ -92,28 +92,28 @@ void RunUEAnalysis(int nentries = 1E3,
 
   TH2F* htransP_numTowersVsMaxJetpTJP2 = new TH2F("htransP_numTowersVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransP_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransP_sumTowerEtVsMaxJetpTJP2","transP;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
-  TH2F* htransP_sumPtVsMaxJetpTJP2 = new TH2F("htransP_sumPtVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* htransP_sumpTVsMaxJetpTJP2 = new TH2F("htransP_sumpTVsMaxJetpTJP2","transP; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
 
   TH2F* htransM_numTracksVsMaxJetpTJP2 = new TH2F("htransM_numTracksVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransM_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransM_sumTrackpTVsMaxJetpTJP2","transM;  jet p_{T} [GeV]; #Sigmatrack p_{T}",40,0,80,320,0.,20.);
 
   TH2F* htransM_numTowersVsMaxJetpTJP2 = new TH2F("htransM_numTowersVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransM_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransM_sumTowerEtVsMaxJetpTJP2","transM;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
-  TH2F* htransM_sumPtVsMaxJetpTJP2 = new TH2F("htransM_sumPtVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* htransM_sumpTVsMaxJetpTJP2 = new TH2F("htransM_sumpTVsMaxJetpTJP2","transM; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
 
   TH2F* htransverse_numTracksVsMaxJetpTJP2 = new TH2F("htransverse_numTracksVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransverse_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransverse_sumTrackpTVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; #Sigmatrack p_{T}",40,0,80,320,0.,20.);
 
   TH2F* htransverse_numTowersVsMaxJetpTJP2 = new TH2F("htransverse_numTowersVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransverse_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransverse_sumTowerEtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
-  TH2F* htransverse_sumPtVsMaxJetpTJP2 = new TH2F("htransverse_sumPtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* htransverse_sumpTVsMaxJetpTJP2 = new TH2F("htransverse_sumpTVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransverse_dPtVsMaxJetpTJP2 = new TH2F("htransverse_dPtVsMaxJetpTJP2","transverse; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)] * (jet area)",40,0,80,320,0.,20.);
 
   TH2F* htransDiff_numTracksVsMaxJetpTJP2 = new TH2F("htransDiff_numTracksVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransDiff_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransDiff_sumTrackpTVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; #Sigmatrack p_{T}",40,0,80,320,0.,20.);
   TH2F* htransDiff_numTowersVsMaxJetpTJP2 = new TH2F("htransDiff_numTowersVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransDiff_sumTowerEtVsMaxJetpTJP2 = new TH2F("htransDiff_sumTowerEtVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
-  TH2F* htransDiff_sumPtVsMaxJetpTJP2 = new TH2F("htransDiff_sumPtVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* htransDiff_sumpTVsMaxJetpTJP2 = new TH2F("htransDiff_sumpTVsMaxJetpTJP2","transDiff; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
 
   TH2F* htransMax_numTracksVsMaxJetpTJP2 = new TH2F("htransMax_numTracksVsMaxJetpTJP2","transMax; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htransMax_sumTrackpTVsMaxJetpTJP2 = new TH2F("htransMax_sumTrackpTVsMaxJetpTJP2","transMax;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
@@ -135,14 +135,14 @@ void RunUEAnalysis(int nentries = 1E3,
 
   TH2F* haway_numTowersVsMaxJetpTJP2 = new TH2F("haway_numTowersVsMaxJetpTJP2","away; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* haway_sumTowerEtVsMaxJetpTJP2 = new TH2F("haway_sumTowerEtVsMaxJetpTJP2","away;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
-  TH2F* haway_sumPtVsMaxJetpTJP2 = new TH2F("haway_sumPtVsMaxJetpTJP2","away; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* haway_sumpTVsMaxJetpTJP2 = new TH2F("haway_sumpTVsMaxJetpTJP2","away; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
 
   TH2F* htoward_numTracksVsMaxJetpTJP2 = new TH2F("htoward_numTracksVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <N_{ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htoward_sumTrackpTVsMaxJetpTJP2 = new TH2F("htoward_sumTrackpTVsMaxJetpTJP2","toward;  jet p_{T} [GeV]; <#Sigmap_{T,ch}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
 
   TH2F* htoward_numTowersVsMaxJetpTJP2 = new TH2F("htoward_numTowersVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <N_{0}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
   TH2F* htoward_sumTowerEtVsMaxJetpTJP2 = new TH2F("htoward_sumTowerEtVsMaxJetpTJP2","toward;  jet p_{T} [GeV]; <#SigmaE_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
-  TH2F* htoward_sumPtVsMaxJetpTJP2 = new TH2F("htoward_sumPtVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
+  TH2F* htoward_sumpTVsMaxJetpTJP2 = new TH2F("htoward_sumpTVsMaxJetpTJP2","toward; jet p_{T} [GeV]; <#Sigmap_{T}>/[#Delta#eta#Delta(#Delta#phi)]",40,0,80,320,0.,20.);
 
   Float_t sumtrackpT_transP, sumtowerEt_transP, sumpT_transP, sumtrackpT_transM, sumtowerEt_transM, sumpT_transM;
   Float_t numtracks_transP, numtowers_transP, numtracks_transM, numtowers_transM;
@@ -205,7 +205,7 @@ void RunUEAnalysis(int nentries = 1E3,
       htransP_numTowersVsMaxJetpTJP2->Fill(leadingJetpT,numtowers_transP/area2);
       htransP_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT,sumtowerEt_transP/area2);
 
-      htransP_sumPtVsMaxJetpTJP2->Fill(leadingJetpT, sumpT_transP/area2);
+      htransP_sumpTVsMaxJetpTJP2->Fill(leadingJetpT, sumpT_transP/area2);
       // ------------------- End Of Trans Plus --------------------------
 
       //-----------------Transverse Minus ------------------------
@@ -224,7 +224,7 @@ void RunUEAnalysis(int nentries = 1E3,
       htransM_numTowersVsMaxJetpTJP2->Fill(leadingJetpT,numtowers_transM/area2);
       htransM_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT,sumtowerEt_transM/area2);
 
-      htransM_sumPtVsMaxJetpTJP2->Fill(leadingJetpT, sumpT_transM/area2);
+      htransM_sumpTVsMaxJetpTJP2->Fill(leadingJetpT, sumpT_transM/area2);
       // ------------------- End Of Trans Minus --------------------------
       
       //----------------Transverse Region------------------------
@@ -237,7 +237,7 @@ void RunUEAnalysis(int nentries = 1E3,
       htransverse_numTowersVsMaxJetpTJP2->Fill(leadingJetpT,(numtowers_transP + numtowers_transM)/area);
       htransverse_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT,(sumtowerEt_transP + sumtowerEt_transM)/area);
 
-      htransverse_sumPtVsMaxJetpTJP2->Fill(leadingJetpT, (sumpT_transP + sumpT_transM)/area);
+      htransverse_sumpTVsMaxJetpTJP2->Fill(leadingJetpT, (sumpT_transP + sumpT_transM)/area);
 
       double jet_area = leadingjet->area();
       htransverse_dPtVsMaxJetpTJP2->Fill(leadingJetpT, (sumpT_transP + sumpT_transM) / area * jet_area);
@@ -250,7 +250,7 @@ void RunUEAnalysis(int nentries = 1E3,
       htransDiff_numTowersVsMaxJetpTJP2->Fill(leadingJetpT, fabs(numtowers_transP - numtowers_transM)/area);
       htransDiff_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT, fabs(sumtowerEt_transP - sumtowerEt_transM)/area);
 
-      htransDiff_sumPtVsMaxJetpTJP2->Fill(leadingJetpT, fabs(sumpT_transP - sumpT_transM)/area);
+      htransDiff_sumpTVsMaxJetpTJP2->Fill(leadingJetpT, fabs(sumpT_transP - sumpT_transM)/area);
 
       //----------------- Away Region ------------------------
       sumtrackpT_away = sumtowerEt_away = 0; 
@@ -272,7 +272,7 @@ void RunUEAnalysis(int nentries = 1E3,
       haway_numTowersVsMaxJetpTJP2->Fill(leadingJetpT,numtowers_away/area);
       haway_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT,sumtowerEt_away/area);
 
-      haway_sumPtVsMaxJetpTJP2->Fill(leadingJetpT,sumpT_away/area);
+      haway_sumpTVsMaxJetpTJP2->Fill(leadingJetpT,sumpT_away/area);
       // ------------------- End Of Away --------------------------
 
       //----------------- Toward Region ---------------------------
@@ -295,7 +295,7 @@ void RunUEAnalysis(int nentries = 1E3,
       htoward_numTowersVsMaxJetpTJP2->Fill(leadingJetpT,numtowers_toward/area);
       htoward_sumTowerEtVsMaxJetpTJP2->Fill(leadingJetpT,sumtowerEt_toward/area);
 
-      htoward_sumPtVsMaxJetpTJP2->Fill(leadingJetpT, sumpT_toward/area);
+      htoward_sumpTVsMaxJetpTJP2->Fill(leadingJetpT, sumpT_toward/area);
       // ------------------- End Of Toward --------------------------
       
     
